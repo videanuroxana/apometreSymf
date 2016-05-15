@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Display Rooms{% endblock %}
+
+{% block body %}
+
+<table border="1">
+	<tr>
+		<td>User Name</td>
+		<td>Room Name</td>
+
+	</tr>
+
+{% for room in rooms %}
+
+	<tr>
+		<td> {{ room.myUser.username }} </td>
+		<td> {{ room.name }}</td>
+
+
+{%  endfor %}
+
+</table>
+
+{% endblock %}
+
+

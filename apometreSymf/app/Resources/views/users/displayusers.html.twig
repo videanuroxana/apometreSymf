@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Display Users{% endblock %}
+
+{% block body %}
+
+<table border="1">
+	<tr>
+		<td>Username</td>
+		<td>First Name</td>
+		<td>Last Name</td>
+		<td>Email</td>
+	</tr>
+
+{% for u in myUsers %}
+
+	<tr>
+		<td> {{ u.username }}</td>
+		<td> {{ u.firstName }}</td>
+		<td> {{ u.lastName }} </td>
+		<td> {{ u.mail }}</td>
+	</tr>
+
+{%  endfor %}
+
+</table>
+
+{% endblock %}
