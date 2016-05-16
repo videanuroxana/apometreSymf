@@ -53,7 +53,7 @@ class UserController extends Controller{
 	}
 	
 	/**
-	 * @Route("/displayUsers")
+	 * @Route("/displayUsers", name="displayUsers")
 	 */
 	public function displayAllUsersAction(){
 		

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Add Room {% endblock %}
+
+{% block body %}
+
+<form action="/addRoom" method="post">
+		Name: <input type="text" name="roomName"/>
+			  <input type="submit" value="Add Room"/>
+
+
+</form>
+
+{% endblock %}
+
