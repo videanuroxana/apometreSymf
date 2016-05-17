@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Add User {% endblock %}
+
+{% block body %}
+
+
+	<form action="/addUser" method="post">
+		<table>
+			<tr>
+				<td>User Name: </td>
+				<td><input type="text" name="userName"/></td>
+			</tr>	
+			<tr>
+				<td>Password: </td>
+				<td><input type="text" name="password"/></td>
+			</tr>
+			<tr>
+				<td>Retype Password: </td>
+				<td><input type="text" name="rePassword"/></td>
+			</tr>
+			<tr>
+				<td>Last Name: </td>
+				<td><input type="text" name="lastName"/></td>
+			</tr>
+			<tr>
+				<td>First Name:</td>
+				<td><input type="text" name="firstName"/></td>
+			</tr>
+			<tr>
+				<td>Mail: </td>
+				<td><input type="text" name="mail"/></td>
+			</tr>
+			<tr>
+				<td>County:</td>
+				<td><input type="text" name="county"/></td>
+			</tr>
+			<tr>
+				<td>City:</td>
+				<td><input type="text" name="city"/></td>
+			</tr>
+			<tr>
+				<td>Sector:</td>
+				<td><input type="text" name="sector"/></td>
+			</tr>
+			<tr>
+				<td>No. Building:</td>
+				<td><input type="text" name="buildingNo"/></td>
+			</tr>
+			<tr>
+				<td>Entrance:</td>
+				<td><input type="text" name="entrance"/></td>
+			</tr>
+			<tr>
+				<td>Floor:</td>
+				<td><input type="text" name="floor"/></td>
+			</tr>
+			<tr>
+				<td>No. Flat:</td>
+				<td><input type="text" name="flatNo"/></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" value="Add User"/></td>
+			</tr>
+		</table>
+
+	</form>
+
+
+{% endblock %}
+

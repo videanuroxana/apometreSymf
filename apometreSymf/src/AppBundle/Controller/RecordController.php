@@ -19,4 +19,19 @@ class RecordController extends Controller{
 	
 		return $this->render('records/displayrecords.html.twig',array("records"=>$records));	
 	}
+	
+	/**
+	 * @Route("/addRecordForm",name="addRecordForm")
+	 */
+	public function addRecordForm(){
+		
+		$loggedInUserId  = 1;
+		$em = $this->getDoctrine()->getManager();
+		$q = $em->createQuery("SELECT r FROM AppBundle:Room r LEFT JOIN r.myUser u WHERE u.id=:uid ");
+		$q->setParameter("uid",$loggedInUserId);
+		$rooms = $q->getResult();
+		
+		
+		return $this->render('records/addRecordForm.html.twig',array("rooms"=>$rooms));
+	}
 }

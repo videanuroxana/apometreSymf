@@ -31,7 +31,7 @@ class MyUser{
 	 */
 	private $password;
 	
-	
+		
 	/**
 	 * @ORM\Column(type="string",name="last_name")
 	 */
@@ -93,12 +93,15 @@ class MyUser{
 	 * @ORM\OneToMany(targetEntity="Room",mappedBy="myUser")
 	 */
 	private $rooms;
+
 	
-	
-	
-	public function __construct(){
+	public function __construct($username,$password) {
+				
 		$this->rooms = new ArrayCollection();
 		$this->records = new ArrayCollection();
+		
+		$this->setUsername($username);
+		$this->setPassword($password);	
 	}
 	
 	

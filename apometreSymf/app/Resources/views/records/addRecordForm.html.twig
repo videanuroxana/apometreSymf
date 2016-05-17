@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Add Record {% endblock %}
+
+{% block body %}
+
+<form action="/addRecord" method="post">
+		<table>
+			<tr>
+				<td>Year: </td>
+				<td><input type="text" name="year"/></td>
+			</tr>	
+			<tr>
+				<td>Month: </td>
+				<td><input type="text" name="month"/></td>
+			</tr>
+			
+			<tr>
+				<td>Room: </td>
+				<td><select name="roomId">
+						{% for room in rooms %}
+							<option value="{{ room.id }}">{{ room.name }} </option>
+						{% endfor %}
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Cold water: </td>
+				<td><input type="text" name="coldWater"/></td>
+			</tr>
+			<tr>
+				<td>Hot water: </td>
+				<td><input type="text" name="hotWater"/></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" value="Add User"/></td>
+			</tr>
+		</table>
+			
+
+</form>
+
+{% endblock %}
+
