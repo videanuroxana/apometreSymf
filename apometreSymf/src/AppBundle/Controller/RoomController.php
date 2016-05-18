@@ -42,6 +42,8 @@ class RoomController extends Controller{
 	 */
 	public function addRoom(Request $req){
 		
+		//TODO - replace with user id from session after login is implemented
+		$loggedinUserId = 1;
 		
 		$roomName = $req->request->get("roomName");
 		//$roomName = $_POST['roomName'];
@@ -50,13 +52,17 @@ class RoomController extends Controller{
 		$room->setName($roomName);
 		$room->setDeleted(0);
 		
-		
-		$loggedinUserId = 1;		
+				
 		$em = $this->getDoctrine()->getManager();
+		
+		// select using entity manager
 		//$q = $em->createQuery("SELECT mu FROM AppBundle:MyUser mu WHERE mu.id=:muid");
 		//$q->setParameter(":muid",$loggedinUserId);
 		//$myUser = $q->getResult();
 		
+		
+		
+		//select using repository
 		$repository = $this->getDoctrine()->getRepository("AppBundle:MyUser");
 		$myUser = $repository->find($loggedinUserId);
 			
