@@ -1,12 +1,43 @@
 {% extends 'base.html.twig' %}
 
+
+ {% block javascripts %}
+<script type="text/javascript">
+   
+   function changeBgColor(){
+	   
+	   button = document.getElementById("myButton");
+	   button.style.backgroundColor = "#ffffff";
+	
+   }
+   
+   function countLetters(){
+	   
+	   nume = document.getElementById("nume");	   
+	   numeLength = nume.value.length;
+	   
+	   
+	   counter = document.getElementById("counter");	   
+	   counter.value = numeLength;
+   }
+   
+   </script>
+
+
+{% endblock %}
+
+
 {% block body %}
    
    <a href="displayUsers">Display Users</a> |
    <a href="displayRecords/1">Display Records</a> |
    <a href="displayRooms/2">Display Rooms</a>
    
-
+   
+   
+	<input type="submit" value="buton" id="myButton" onclick="changeBgColor()"/> <br/>
+	<input type="text" name="nume" id="nume" onkeyup="countLetters()" /> 
+	Ai <input type="text" name="counter" id="counter"/> litere
        
 {% endblock %}
 

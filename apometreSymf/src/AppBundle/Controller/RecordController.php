@@ -84,4 +84,61 @@ class RecordController extends Controller{
 		
 		
 	}
+	
+	/**
+ 	* @Route("/editRecordForm/{id}",name="editRecordForm")
+ 	*/
+	public function editRecordFormAction($id){
+		
+		$loggedInUserId = 1;
+		//get Record from database by provided id
+		$em = $this->getDoctrine()->getManager();
+		$q = $em->createQuery("SELECT rec FROM AppBundle:Record rec LEFT JOIN rec.room rr WHERE rec.id=:rid");
+		$q->setParameter(":rid",$id);
+		$rez = $q->getResult();
+		$record = $rez[0];
+		
+		
+		//find all rooms that belongs to current LoggedIn user
+		$roomQuery = $em->createQuery("SELECT r FROM AppBundle:Room r LEFT JOIN r.myUser mu WHERE mu.id=:muid");
+		$roomQuery->setParameter(":muid",$loggedInUserId);
+		$rooms = $roomQuery->getResult();
+		
+		
+		return $this->render('records/editRecordForm.html.twig',array("record"=>$record,"rooms"=>$rooms));
+	}
+	
+	/**
+	 * @Route("/editRecord",name="editRecord")
+	 */
+	public function editRecordAction(Request $req){
+		
+		$loggedInUserId = 1;
+		$em = $this->getDoctrine()->getManager();
+		$year = $req->request->get("year");
+		$month = $req->request->get("month");
+		$hotWater = $req->request->get("hotWater");
+		$coldWater = $req->request->get("coldWater");
+		$recordId = $req->request->get("recordId");
+		$roomId = $req->request->get("roomId");
+		
+		//die($recordId);
+		
+		
+		$record = $this->getDoctrine()->getRepository("AppBundle:Record")->find($recordId);	
+		
+		$record->setYear($year);
+		$record->setMonth($month);
+		$record->setHotWater($hotWater);
+		$record->setColdWater($coldWater);
+		$room = $this->getDoctrine()->getRepository("AppBundle:Room")->find($roomId);
+		$record->setRoom($room);
+				
+		$em->persist($record);
+		$em->flush();
+		
+		return $this->redirectToRoute("displayRecords",array("id"=>$loggedInUserId));
+	
+		
+	}
 }
