@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Edit Record{% endblock %}
+
+{% block body %}
+
+<table border="1">
+	<form action="/editRecord" method="post">
+		<tr>
+			<td> Year</td>
+			<td><input type="text" name="year" id="year" value="{{ record.year }}"/></td>
+		</tr>
+		<tr>
+			<td>Month</td>
+			<td><input type="text" name="month" id="month" value="{{ record.month }}"/></td>
+		</tr>
+		<tr>
+			<td>Hot Water</td>
+			<td><input type="text" name="hotWater" id="hotWater" value="{{ record.hotWater }}"/></td>
+		</tr>
+		<tr>
+			<td>Cold Water</td>
+			<td><input type="text" name="coldWater" id="coldWater" value="{{ record.coldWater }}"/></td>
+		</tr>
+		<tr>
+			<td>Room</td>
+			<td>
+				<select name="roomId">
+					<option value="0">--Select--</option>
+					
+					{% for room in rooms %}
+					
+						<option value="{{ room.id }}" 
+						
+							{% if record.room.name == room.name %}
+								selected="selected"
+							{% endif %}
+						
+						
+						> {{ room.name }} </option>
+					
+					
+					{% endfor %}					
+
+				</select>
+	
+			</td>
+		</tr>
+		
+		<td colspan="2" align="center"><input type="submit" value="Update"/></td>
+		<input type="hidden" name="recordId" value="{{ record.id }}"/>
+		
+	
+	
+	</form>
+
+
+
+</table>
+
+{% endblock %}
+
